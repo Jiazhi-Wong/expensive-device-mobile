@@ -1,0 +1,291 @@
+@charset "UTF-8";
+@import "functions";
+
+//针对字体
+//使用 @include px2px(font-size,20);
+@mixin px2px($name, $px) {
+    #{$name}: round($px / 2) * 1px;
+    [data-dpr="2"] & {
+        #{$name}: $px * 1px;
+    }
+    [data-dpr="2.5"] & {
+        #{$name}: round($px * 2.5 / 2) * 1px;
+    }
+    [data-dpr="2.75"] & {
+        #{$name}: round($px * 2.75 / 2) * 1px;
+    }
+    [data-dpr="3"] & {
+        #{$name}: round($px / 2 * 3) * 1px
+    }
+    [data-dpr="4"] & {
+        #{$name}: $px * 2px;
+    }
+}
+
+//图片媒体查询
+@mixin retina($url) {
+    background-image: url("#{$url+ '.png'}");
+    [data-dpr="2"] & {
+        background-image: url("#{$url+ '@2x.png'}");
+    }
+    [data-dpr="3"] & {
+        background-image: url("#{$url+ '@3x.png'}");
+    }
+}
+
+//多行文字省略号
+@mixin clamp($num) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $num;
+    -webkit-box-orient: vertical;
+}
+
+//background-size rem数值转换
+@mixin bg_size_rem($x:auto,$y:auto) {
+    @if $x==auto{
+        $x:auto;
+    } @else {
+        $x:px2rem($x);
+    }
+    @if $y==auto{
+        $y:auto;
+    } @else {
+        $y:px2rem($y);
+    }
+    background-size: ($x, $y);
+}
+
+//background-size px数值转换
+@mixin bg_size_px($x:auto,$y:auto) {
+    @if $x==auto{
+        $x:auto;
+    } @else {
+        $x:px2rem($x);
+    }
+    @if $y==auto{
+        $y:auto;
+    } @else {
+        $y:px2rem($y);
+    }
+    background-size: ($x, $y);
+}
+
+// Clearfix
+// @see http://nicolasgallagher.com/micro-clearfix-hack/
+@mixin clearfix {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+// Sizing
+// -----------------------------------------------------------------------------
+@mixin size($width, $height:$width) {
+    width: px2rem($width);
+    height: px2rem($height);
+}
+
+
+// TODO: add scrollableX & scrollableY
+@mixin scrollable() {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+// Text
+// -----------------------------------------------------------------------------
+
+// Text overflow
+// Requires inline-block or block for proper styling
+@mixin text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// Line clamp
+// http://dropshado.ws/post/1015351370/webkit-line-clamp
+@mixin line-clamp($lines: 2, $line-height: 1.3em) {
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines; // number of lines to show
+    overflow: hidden;
+    line-height: $line-height;
+    max-height: $line-height * $lines;
+}
+
+// Form
+// -----------------------------------------------------------------------------
+
+// Disable OS-level styles
+@mixin no-appearance {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+// Shape
+// -----------------------------------------------------------------------------
+/// CSS Triangle
+/// Creates a CSS triangle, which can be used for dropdown arrows, popup tails, and more. Use this mixin inside a `&::before` or `&::after` selector, to attach the triangle to an existing element.
+///
+/// @param {number} $triangle-size - Width of the triangle.
+/// @param {color} $triangle-color - Color of the triangle.
+/// @param {keyword} $triangle-direction - Direction the triangle points. Can be `top`, `right`, `bottom`, or `left`.
+@mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: inset $triangle-size;
+    @if ($triangle-direction == top) {
+        border-color: $triangle-color transparent transparent transparent;
+        border-top-style: solid;
+    }
+    @if ($triangle-direction == bottom) {
+        border-color: transparent transparent $triangle-color transparent;
+        border-bottom-style: solid;
+    }
+    @if ($triangle-direction == left) {
+        border-color: transparent transparent transparent $triangle-color;
+        border-left-style: solid;
+    }
+    @if ($triangle-direction == right) {
+        border-color: transparent $triangle-color transparent transparent;
+        border-right-style: solid;
+    }
+}
+
+// Retina borders
+// @see https://gist.github.com/w0rm/c0dd4b7aed71acc03900
+// @see http://dieulot.net/css-retina-hairline
+// -----------------------------------------------------------------------------
+@mixin retina-border-top($color: #c4c4c4) {
+    position: relative;
+
+    &::before {
+        content: "";
+        top: 0;
+        left: 0;
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: $color;
+    }
+
+    // simulate a 1px border on retina screens
+    @media (-webkit-min-device-pixel-ratio: 2) {
+        &::before {
+            transform: scaleY(0.5);
+            transform-origin: 50% 0;
+        }
+    }
+}
+
+@mixin retina-border-bottom($color: #c4c4c4) {
+    position: relative;
+
+    &::after {
+        content: " ";
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        z-index: 99;
+        width: 100%;
+        height: 1px;
+        background-color: $color;
+        backface-visibility: hidden;
+    }
+
+    // simulate a 1px border on retina screens
+    @media (-webkit-min-device-pixel-ratio: 2) {
+        &::after {
+            transform: scaleY(0.5);
+            transform-origin: 50% 100%;
+        }
+    }
+}
+
+// Animation
+// -----------------------------------------------------------------------------
+
+@mixin force-hardware-acceleration {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+}
+
+%force-hardware-acceleration {
+    @include force-hardware-acceleration();
+}
+
+@mixin btn {
+    &:active,
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+// flex
+// 子元素-平均分栏
+@mixin flex1 {
+    flex: 1;
+}
+@mixin flex2 {
+    flex: 2;
+}
+@mixin flex3 {
+    flex: 3;
+}
+@mixin flex4 {
+    flex: 4;
+}
+@mixin flex5 {
+    flex: 5;
+}
+// 父元素-横向排列（主轴）
+@mixin flex-h {
+    display: flex;
+    -webkit-box-orient: horizontal;
+    flex-direction: row;
+}
+// 父元素-从右到左横向排列（主轴）
+@mixin flex-h-r{
+    display: flex;
+    -webkit-box-pack: end;
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+    flex-direction: row-reverse;
+}
+// 父元素-水平居中（主轴是横向才生效）
+@mixin flex-hc {
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+// 父元素-纵向排列（主轴）
+@mixin flex-v {
+    display: flex;
+    -webkit-box-orient: vertical;
+    flex-direction: column;
+}
+@mixin flex-v-r{
+    display: flex;
+    -webkit-box-pack: end;
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+    flex-direction: column-reverse;
+}
+// 父元素-竖直居中（主轴是横向才生效）
+@mixin flex-vc {
+    -webkit-box-align: center;
+    align-items: center;
+}

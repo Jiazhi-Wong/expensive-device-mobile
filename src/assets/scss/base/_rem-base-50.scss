@@ -1,0 +1,8 @@
+@charset "UTF-8";
+@each $width in 319, 359, 374, 413, 479, 639,749 {
+    @media (min-width: $width+'px') {
+        html {
+            font-size: ($width+1)/15+px;
+        }
+    }
+}

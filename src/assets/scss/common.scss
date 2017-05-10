@@ -1,0 +1,13 @@
+@charset "utf-8";
+@import "base/necessary.scss";
+@import "base/cssreset.scss";
+@import "base/rem-base-50";
+@import "base/common.scss";
+@import "base/extend";
+@import "base/header.scss";
+@import "base/footer.scss";
+/*warn begin:这里原本来要放在_extend.scss里面的，但是由于home.scss import _necessary.scss 而_necessary.scss import _extend.scss，导致背景图片路径怎么相对都是错误的，
+现在的解决方法是涉及图片路径的都放在这里，暂时过度，待找到原因
+*/
+
+

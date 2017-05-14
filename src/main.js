@@ -20,7 +20,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 router.beforeEach((to, from, next) => {
   document.title = '广工大仪外借系统-' + to.name;
-  console.log(to);
   next()
   // if (store.state.user.isLogin) {
   //   next()

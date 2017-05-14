@@ -4,7 +4,7 @@
     <div class="footer-nav">
       <router-link tag="div" class="nav-item"
                    v-for="(item, index) in navList"
-                   :to="item.to"  :key="index">
+                   :to="item.to" :key="index">
         <div class="iconfont" :class="item.iconClass"></div>
         {{item.desc}}
       </router-link>
@@ -37,7 +37,7 @@
     },
     mounted() {
       if (this.$route.name === 'main') {
-        this.$router.push({name: '主页'})
+        this.$router.push({name: '首页'})
       }
     }
   }

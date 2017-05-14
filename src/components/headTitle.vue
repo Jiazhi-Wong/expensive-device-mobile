@@ -19,6 +19,7 @@
     font-size: 20px;
     font-weight: bold;
     background-color: #fff;
-    color: $black
+    color: $black;
+    border-bottom: 1px #D9D9D9 solid;
   }
 </style>

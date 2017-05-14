@@ -37,7 +37,7 @@
           }],
           action: [{
             text: '查看详情',
-            link: '/loanDetail',
+            link: '/loanDetail/123456',
             style: 'primary'
           }]
         }, {
@@ -58,7 +58,7 @@
           }],
           action: [{
             text: '查看详情',
-            link: '/loanDetail',
+            link: '/loanDetail/123456',
             style: 'primary'
           }]
         }, {
@@ -79,7 +79,7 @@
           }],
           action: [{
             text: '查看详情',
-            link: '/loanDetail',
+            link: '/loanDetail/123456',
             style: 'primary'
           }]
         }, {
@@ -100,7 +100,7 @@
           }],
           action: [{
             text: '查看详情',
-            link: '/loanDetail',
+            link: '/loanDetail/123456',
             style: 'primary'
           }]
         }]

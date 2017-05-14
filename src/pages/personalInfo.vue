@@ -1,6 +1,6 @@
 <template>
   <div class="personalInfo">
-    <group label-width="5em" label-margin-right="1em" label-align="left">
+    <group title="个人信息" label-width="5em" label-margin-right="1em" label-align="left">
       <cell v-for="(item, index) in infoList"
             :title="item.title"
             :value="item.value"

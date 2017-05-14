@@ -16,6 +16,7 @@
   @import "./assets/iconfont/iconfont.css";
 
   html {
+    overflow: auto;
     background-color: #fbf9fe;
   }
 

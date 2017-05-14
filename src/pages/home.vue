@@ -5,8 +5,8 @@
       <form-preview
         class="device-item"
         v-for="(device, index) in currentDeviceList"
-        :header-label="device.deviceName"
-        :header-value="device.status"
+        :header-label="device.status"
+        :header-value="device.deviceName"
         :body-items="device.messageList"
         :footer-buttons="device.action"
         :key="index"></form-preview>
@@ -16,19 +16,16 @@
 </template>
 
 <script>
-  import {FormPreview} from 'vux';
+  import {Group, FormPreview} from 'vux';
   import headTitle from '@/components/headTitle';
 
   export default {
     data() {
       return {
         currentDeviceList: [{
-          deviceName: '标题一',
-          status: 1,
+          deviceName: '3D打印机',
+          status: '',
           messageList: [{
-            label: '借用设备',
-            value: '3D打印机'
-          }, {
             label: '状态',
             value: 1
           }, {
@@ -40,16 +37,13 @@
           }],
           action: [{
             text: '查看详情',
-            link: '/loanDetail',
+            link: '/loanDetail/123456',
             style: 'primary'
           }]
         }, {
-          deviceName: '标题一',
-          status: 1,
+          deviceName: '3D打印机',
+          status: '',
           messageList: [{
-            label: '借用设备',
-            value: '3D打印机'
-          }, {
             label: '状态',
             value: 1
           }, {
@@ -61,16 +55,13 @@
           }],
           action: [{
             text: '查看详情',
-            link: '/loanDetail',
+            link: '/loanDetail/123456',
             style: 'primary'
           }]
         }, {
-          deviceName: '标题一',
-          status: 1,
+          deviceName: '3D打印机',
+          status: '',
           messageList: [{
-            label: '借用设备',
-            value: '3D打印机'
-          }, {
             label: '状态',
             value: 1
           }, {
@@ -82,16 +73,13 @@
           }],
           action: [{
             text: '查看详情',
-            link: '/loanDetail',
+            link: '/loanDetail/123456',
             style: 'primary'
           }]
         }, {
-          deviceName: '标题一',
-          status: 1,
+          deviceName: '3D打印机',
+          status: '',
           messageList: [{
-            label: '借用设备',
-            value: '3D打印机'
-          }, {
             label: '状态',
             value: 1
           }, {
@@ -103,7 +91,7 @@
           }],
           action: [{
             text: '查看详情',
-            link: '/loanDetail',
+            link: '/loanDetail/123456',
             style: 'primary'
           }]
         }]
@@ -111,7 +99,8 @@
     },
     components: {
       FormPreview,
-      headTitle
+      headTitle,
+      Group
     }
   }
 </script>

@@ -10,8 +10,8 @@
         v-if="searchDeviceList.length !== 0"
         class="device-item"
         v-for="(device, index) in searchDeviceList"
-        :header-label="device.deviceName"
-        :header-value="device.status"
+        :header-label="device.status"
+        :header-value="device.deviceName"
         :body-items="device.messageList"
         :footer-buttons="device.action"
         :key="index"></form-preview>
@@ -28,14 +28,11 @@
       return {
         searchValue: '',
         searchDeviceList: [{
-          deviceName: '标题一',
-          status: 1,
+          deviceName: '3D打印机',
+          status: '',
           messageList: [{
-            label: '借用设备',
-            value: '3D打印机'
-          }, {
             label: '状态',
-            value: 1
+            value: '正常'
           }, {
             label: '设备管理人',
             value: '李老师'
@@ -45,18 +42,15 @@
           }],
           action: [{
             text: '查看详情',
-            link: '/loanDetail',
+            link: '/deviceDetail',
             style: 'primary'
           }]
         }, {
-          deviceName: '标题一',
-          status: 1,
+          deviceName: '3D打印机',
+          status: '',
           messageList: [{
-            label: '借用设备',
-            value: '3D打印机'
-          }, {
             label: '状态',
-            value: 1
+            value: '正常'
           }, {
             label: '设备管理人',
             value: '李老师'
@@ -66,18 +60,15 @@
           }],
           action: [{
             text: '查看详情',
-            link: '/loanDetail',
+            link: '/deviceDetail',
             style: 'primary'
           }]
         }, {
-          deviceName: '标题一',
-          status: 1,
+          deviceName: '3D打印机',
+          status: '',
           messageList: [{
-            label: '借用设备',
-            value: '3D打印机'
-          }, {
             label: '状态',
-            value: 1
+            value: '正常'
           }, {
             label: '设备管理人',
             value: '李老师'
@@ -87,18 +78,15 @@
           }],
           action: [{
             text: '查看详情',
-            link: '/loanDetail',
+            link: '/deviceDetail',
             style: 'primary'
           }]
         }, {
-          deviceName: '标题一',
-          status: 1,
+          deviceName: '3D打印机',
+          status: '',
           messageList: [{
-            label: '借用设备',
-            value: '3D打印机'
-          }, {
             label: '状态',
-            value: 1
+            value: '正常'
           }, {
             label: '设备管理人',
             value: '李老师'
@@ -108,7 +96,7 @@
           }],
           action: [{
             text: '查看详情',
-            link: '/loanDetail',
+            link: '/deviceDetail',
             style: 'primary'
           }]
         }]

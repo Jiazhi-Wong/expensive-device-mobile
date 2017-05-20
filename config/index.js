@@ -2,7 +2,8 @@
 var path = require('path')
 
 // 代理转发后台接口
-var proxyApi = require('./backend-api.conf')
+// var proxyApi = require('./backend-api.conf')
+var proxyApi = {}
 
 module.exports = {
   build: {

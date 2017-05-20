@@ -31,68 +31,14 @@
           deviceName: '3D打印机',
           status: '',
           messageList: [{
-            label: '状态',
+            label: '设备状态',
             value: '正常'
           }, {
             label: '设备管理人',
-            value: '李老师'
+            value: '设备管理员1'
           }, {
             label: '联系方式',
-            value: '1333333333'
-          }],
-          action: [{
-            text: '查看详情',
-            link: '/deviceDetail',
-            style: 'primary'
-          }]
-        }, {
-          deviceName: '3D打印机',
-          status: '',
-          messageList: [{
-            label: '状态',
-            value: '正常'
-          }, {
-            label: '设备管理人',
-            value: '李老师'
-          }, {
-            label: '联系方式',
-            value: '1333333333'
-          }],
-          action: [{
-            text: '查看详情',
-            link: '/deviceDetail',
-            style: 'primary'
-          }]
-        }, {
-          deviceName: '3D打印机',
-          status: '',
-          messageList: [{
-            label: '状态',
-            value: '正常'
-          }, {
-            label: '设备管理人',
-            value: '李老师'
-          }, {
-            label: '联系方式',
-            value: '1333333333'
-          }],
-          action: [{
-            text: '查看详情',
-            link: '/deviceDetail',
-            style: 'primary'
-          }]
-        }, {
-          deviceName: '3D打印机',
-          status: '',
-          messageList: [{
-            label: '状态',
-            value: '正常'
-          }, {
-            label: '设备管理人',
-            value: '李老师'
-          }, {
-            label: '联系方式',
-            value: '1333333333'
+            value: '13284758394'
           }],
           action: [{
             text: '查看详情',

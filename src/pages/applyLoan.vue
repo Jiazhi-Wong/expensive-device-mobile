@@ -1,6 +1,6 @@
 <template>
   <div class="applyLoan">
-    <group title="填写借用申请表" label-width="5em"
+    <group title="填写借用申请表" label-width="6em"
            label-margin-right="1em"
            label-align="left">
       <x-input title="借用设备" required readonly
@@ -13,12 +13,21 @@
       <x-input title="邮箱" required placeholder="请输入借用人邮箱"
                type="email"
                v-model="loanMsg.email"></x-input>
-      <datetime title="借用时间" required
-                v-model="loanMsg.loanTime" value-text-align="left"></datetime>
-      <datetime title="归还时间" required
-                v-model="loanMsg.returnTime" value-text-align="left"></datetime>
       <x-textarea title="借用用途" placeholder="请输入借用用途"
-                  v-model="loanMsg.loanPurpose" :show-counter="false" :rows="3"></x-textarea>
+                  v-model="loanMsg.loanPurpose"
+                  :show-counter="false" :rows="3"></x-textarea>
+      <datetime title="借用时间" required
+                v-model="loanMsg.loanTime"
+                :start-date="startDate"
+                :end-date="endDate"
+                value-text-align="left"></datetime>
+      <datetime title="归还时间" required
+                v-model="loanMsg.returnTime"
+                :start-date="loanMsg.loanTime"
+                :end-date="endDate"
+                value-text-align="left"></datetime>
+      <x-textarea title="可借用时间段" readonly
+                  v-model="canLoanTime"></x-textarea>
     </group>
     <box gap="10px 10px">
       <x-button type="primary" @click.native="submitLoan">确认提交</x-button>
@@ -31,17 +40,20 @@
   import util from '@/assets/js/util';
 
   const defaultDay = 3;
+  const oneMonthDay = 30;
 
   export default {
     data () {
       return {
-        nowDate: util.formatDate.format(new Date()),
+        startDate: util.formatDate.format(new Date()),
+        endDate: util.formatDate.format(new Date(Date.now() + oneMonthDay * 24 * 3600 * 1000)),
+        canLoanTime: '2017/05/18-2017/05/22，2017/05/24-2017/05/30，2017/06/02-2017/06/18',
         loanMsg: {
           deviceId: this.$route.params.deviceId,
           deviceName: this.$route.params.deviceName,
-          loaner: '222',
-          phone: '13333333',
-          email: '33333@qq.com',
+          loaner: '黄嘉志',
+          phone: '13268112001',
+          email: '596531098@qq.com',
           loanTime: util.formatDate.format(new Date()),
           returnTime: util.formatDate.format(new Date(Date.now() + defaultDay * 24 * 3600 * 1000)),
           loanPurpose: ''
